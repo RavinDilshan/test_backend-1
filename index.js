@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/users');
+const home = require("./routes/home");
 const db = require('./db'); // Ensure db is properly configured
 
 // Load environment variables
@@ -21,7 +22,9 @@ app.use(cors({
 app.use(express.json());
 
 // API routes
-app.use('/api/users', userRoutes);
+app.use('/users', userRoutes);
+
+app.use("/home", home);
 
 // Start the server
 app.listen(port, () => {
